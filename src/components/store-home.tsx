@@ -50,7 +50,6 @@ import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppDealCard } from "@/components/app-deal-card";
-import { WelcomeStorePop } from "@/components/welcome-store-pop";
 import { useCompare } from "@/context/compare-context";
 import { useStoreData } from "@/context/store-data-context";
 import { getAppsSeekingTesters } from "@/lib/mock-data";
@@ -253,8 +252,6 @@ export function StoreHome() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <WelcomeStorePop />
-
       {/* Hero – spec: teal gradient, title, CTAs (compact) */}
       <section className="relative overflow-hidden gs-hero-gradient text-white">
         <div className="relative mx-auto max-w-6xl px-3 sm:px-4 py-8 sm:py-12 lg:py-16">

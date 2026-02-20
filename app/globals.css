@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* Class-based dark mode for next-themes (dark: applies when .dark is on html) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* GrowthStarter design — Primary teal #0F7377, Teal light #00A884 */
+:root {
+  --radius: 0.625rem;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 187 78% 26%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 187 78% 26%;
+  --chart-1: 187 78% 26%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 187 78% 26%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+  --gs-teal: 187 78% 26%;
+  --gs-teal-light: 160 100% 33%;
+  --gs-orange: 43 96% 56%;
+  --gs-success: 160 100% 33%;
+  /* Apps Store & Deals design tokens (spec) */
+  --apps-primary: #0F7377;
+  --apps-secondary: #F59E0B;
+  --apps-slate: #1E293B;
+  --app-trial: #22C55E;
+  --app-beta: #3B82F6;
+  --app-validation: #A855F7;
+  --app-demo: #F97316;
+  --deal-discount: #F97316;
+  --deal-credits: #3B82F6;
+  --deal-free: #22C55E;
+}
+
+.dark {
+  --background: 224 71% 4%;
+  --foreground: 213 31% 91%;
+  --card: 224 71% 6%;
+  --card-foreground: 213 31% 91%;
+  --popover: 224 71% 6%;
+  --popover-foreground: 213 31% 91%;
+  --primary: 168 76% 42%;
+  --primary-foreground: 224 71% 4%;
+  --secondary: 222 47% 11%;
+  --secondary-foreground: 213 31% 91%;
+  --muted: 223 47% 11%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 216 34% 17%;
+  --accent-foreground: 213 31% 91%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 213 31% 91%;
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
+  --ring: 168 76% 42%;
+  --chart-1: 168 76% 42%;
+  --chart-2: 30 80% 55%;
+  --chart-3: 280 65% 60%;
+  --chart-4: 340 75% 55%;
+  --chart-5: 200 70% 50%;
+  --sidebar-background: 224 71% 4%;
+  --sidebar-foreground: 213 31% 91%;
+  --sidebar-primary: 168 76% 42%;
+  --sidebar-primary-foreground: 224 71% 4%;
+  --sidebar-accent: 216 34% 17%;
+  --sidebar-accent-foreground: 213 31% 91%;
+  --sidebar-border: 216 34% 17%;
+  --sidebar-ring: 168 76% 42%;
+  --gs-teal: 168 76% 42%;
+  --gs-teal-light: 168 84% 50%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-destructive: hsl(var(--destructive));
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: calc(var(--radius) - 0.125rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Primary gradient – buttons, CTAs, active nav */
+.gs-gradient {
+  background: linear-gradient(135deg, #0F7377 0%, #00A884 100%);
+}
+.dark .gs-gradient {
+  background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
+}
+
+/* Mobile app-like: safe area and bottom nav spacer */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (max-width: 1023px) {
+  .mobile-nav-spacer {
+    padding-bottom: 5.5rem;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-top-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+/* Hero gradient (spec): from-[#0F7377] via-[#0A5A5D] to-[#085456] */
+.gs-hero-gradient {
+  background: linear-gradient(135deg, #0F7377 0%, #0A5A5D 50%, #085456 100%);
+}
+
+/* App type badges (spec §2) */
+.badge-app-trial { background: rgb(236 253 245); color: rgb(21 128 61); }
+.dark .badge-app-trial { background: rgb(6 78 59 / 0.3); color: rgb(52 211 153); }
+.badge-app-beta { background: rgb(239 246 255); color: rgb(29 78 216); }
+.dark .badge-app-beta { background: rgb(30 58 138 / 0.3); color: rgb(96 165 250); }
+.badge-app-pilot { background: rgb(250 245 255); color: rgb(126 34 206); }
+.dark .badge-app-pilot { background: rgb(88 28 135 / 0.3); color: rgb(216 180 254); }
+.badge-app-validation { background: rgb(245 243 255); color: rgb(109 40 217); }
+.dark .badge-app-validation { background: rgb(46 16 101 / 0.3); color: rgb(196 181 253); }
+.badge-app-demo { background: rgb(255 251 235); color: rgb(180 83 9); }
+.dark .badge-app-demo { background: rgb(120 53 15 / 0.3); color: rgb(253 186 116); }
+.badge-app-free { background: rgb(240 253 250); color: rgb(19 78 74); }
+.dark .badge-app-free { background: rgb(19 78 74 / 0.3); color: rgb(94 234 212); }
+.badge-app-enterprise { background: rgb(248 250 252); color: rgb(51 65 85); }
+.dark .badge-app-enterprise { background: rgb(30 41 59 / 0.5); color: rgb(203 213 225); }
+
+/* Deal type badges (spec §2) */
+.badge-deal-discount { background: rgb(255 247 237); color: rgb(194 65 12); }
+.dark .badge-deal-discount { background: rgb(124 45 18 / 0.3); color: rgb(251 146 60); }
+.badge-deal-credits { background: rgb(238 242 255); color: rgb(67 56 202); }
+.dark .badge-deal-credits { background: rgb(49 46 129 / 0.3); color: rgb(165 180 252); }
+.badge-deal-free { background: rgb(236 253 245); color: rgb(21 128 61); }
+.dark .badge-deal-free { background: rgb(6 78 59 / 0.3); color: rgb(52 211 153); }
+.badge-deal-partnership { background: rgb(253 242 248); color: rgb(157 23 77); }
+.dark .badge-deal-partnership { background: rgb(131 24 67 / 0.3); color: rgb(244 114 182); }
+.badge-deal-bundle { background: rgb(236 254 255); color: rgb(22 78 99); }
+.dark .badge-deal-bundle { background: rgb(22 78 99 / 0.3); color: rgb(103 232 249); }
+
+/* Gradient text – logo / headings */
+.gs-gradient-text {
+  background: linear-gradient(135deg, #0F7377 0%, #00A884 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .gs-gradient-text {
+  background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover – lift + teal shadow */
+.gs-card-hover {
+  transition: all 0.3s ease;
+}
+.gs-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(15, 115, 119, 0.15);
+}
+.dark .gs-card-hover:hover {
+  box-shadow: 0 20px 40px -12px rgba(20, 184, 166, 0.25);
+}
+
+/* Sticky header bar */
+.gs-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.dark .gs-glass {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(var(--background), var(--background)) padding-box,
+    linear-gradient(135deg, #0F7377 0%, #00A884 100%) border-box;
+  border: 2px solid transparent;
+}
+
+/* Teal glow */
+.neon-glow {
+  box-shadow:
+    0 0 5px rgba(15, 115, 119, 0.4),
+    0 0 10px rgba(15, 115, 119, 0.3),
+    0 0 15px rgba(15, 115, 119, 0.2);
+}
+.dark .neon-glow {
+  box-shadow:
+    0 0 5px rgba(20, 184, 166, 0.4),
+    0 0 10px rgba(20, 184, 166, 0.3),
+    0 0 15px rgba(20, 184, 166, 0.2);
+}
+
+/* Scrollbar & selection */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 115, 119, 0.3) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(15, 115, 119, 0.3);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 115, 119, 0.5);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(20, 184, 166, 0.3);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 184, 166, 0.5);
+}
+
+::selection {
+  background: rgba(15, 115, 119, 0.3);
+  color: inherit;
+}
+.dark ::selection {
+  background: rgba(20, 184, 166, 0.3);
+}
+
+/* Mobile app shell: prevent horizontal scroll, touch-friendly */
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* Reduce tap highlight for app-like feel */
+  -webkit-tap-highlight-color: rgba(15, 115, 119, 0.12);
+}
+.dark body {
+  -webkit-tap-highlight-color: rgba(20, 184, 166, 0.2);
+}
+
+/* Touch targets: min 44px for interactive elements on touch devices */
+@media (pointer: coarse) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
